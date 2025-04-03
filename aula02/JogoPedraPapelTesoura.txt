@@ -1,0 +1,63 @@
+//Jogo pedra papel e tesoura
+// pedra(🪨) = 0, papel(📄) = 1, tesoura(✂️) = 2
+import kotlin.random.Random
+
+var ptPlayer1 = 0
+var ptPlayer2 = 0
+
+fun main() {
+    var rodada = 1
+    
+    
+    while(rodada < 6){
+        val jogadaPlayer1 = Random.nextInt(0,3)
+       	val jogadaPlayer2 = Random.nextInt(0,3)
+
+        println("\t\t\t\t\t--------- RODADA $rodada ---------")
+        println("\n\t\t\t\t\t  J1  =>  ${jogada(jogadaPlayer1)}  X  ${jogada(jogadaPlayer2)}  <=  J2\n")
+        println("\t\t\t\t\t-------- RESULTADO $rodada --------\n")
+        
+        pontos(jogadaPlayer1, jogadaPlayer2)
+        
+        println("\t\t\t\t\t Player 1 = $ptPlayer1 | Player 2 = $ptPlayer2")
+        println("\t\t\t\t   ________________________________________")
+        
+        rodada++
+    }
+    
+    println(vencedor(ptPlayer1, ptPlayer2))
+}
+
+fun jogada(escolha: Int) : String {
+    var result = ""
+    when(escolha){
+        0 ->result = "🪨"
+        1 ->result = "📄"
+        2 ->result = "✂️"
+    }
+    return result
+}
+
+fun pontos(jp1: Int, jp2 : Int){
+    if(jp1 == jp2){
+        println("\t\t\t\t\t\t🟰 EMPATE\n")
+    }else if(jp1 == 0 && jp2 == 2 || jp1 == 1 && jp2 == 0 || jp1 == 2 && jp2 == 1){
+        println("\t\t\t\t\t    🥇 VITÓRIA PLAYER 1\n")
+        ptPlayer1++
+    } else{
+        println("\t\t\t\t\t    🥇 VITÓRIA PLAYER 2\n")
+        ptPlayer2++
+    }
+    
+}
+
+fun vencedor(pj1 : Int, pj2 : Int){
+    if(pj1 == pj2){
+        println("\n\t\t\t\t\t\t🟰 EMPATE 🟰")
+    }else if(pj1 == 0 && pj2 == 2 || pj1 == 1 && pj2 == 0 || pj1 == 2 && pj2 == 1){
+        println("\n\t\t\t\t\t    🥇 PLAYER 1 VENCEU 🥇\n")
+    }else{
+        println("\n\t\t\t\t\t    🥇 PLAYER 2 VENCEU 🥇\n")
+    }
+    
+}
