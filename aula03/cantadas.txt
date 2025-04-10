@@ -1,0 +1,80 @@
+import kotlin.random.Random
+
+fun main() {
+    println("*** Vai dar namoro ***")
+    
+    val sorteio = Random.nextInt(0, cantadas.size)
+    //var num = 1
+    
+    println("Cantadas:")
+    println(cantadas[sorteio])
+    
+    println("\n ==> Mostrando todas as cantadas <==")
+    
+    // Interando lista: método 1
+    /*var num = 1
+    cantadas.forEach{
+        print("$num - ")
+        println(it)
+        num++
+    }*/
+    
+    // Interando lista: método 2
+    cantadas.forEachIndexed{ indice, frase ->
+        println("${indice + 1} - $frase")
+    }
+    
+    println("\n==> Listando os Objetos <==")
+    
+    listCantadasObj.forEach{
+        print("Frase: ")
+        println(it.frase)
+        print("Momento: ")
+        println(it.momento)
+        print("Ano: ")
+        println(it.ano)
+        println("==========================")
+    }
+}
+
+val cantadas = arrayOf(
+	"Seu pai é padeiro? Porque você é um sonho",
+    "Você não é papel, mas eu quero te dar uns amassos!",
+    "Você não é da Disney, mas quero que seja minha princesa",
+    "Você não é pescoço, mas mexeu com a minha cabeça"
+)
+
+//Criando classe de dados
+data class Cantadas(
+	var frase: String,
+    var momento: String,
+    var ano: Int
+)
+
+val listCantadasObj = arrayOf(
+	Cantadas(
+    	ano = 2015,
+        frase = "Você é o ovo que faltava na minha marmita",
+        momento = "Festa na piscina"
+    ),
+    Cantadas(
+    	ano = 2025,
+        frase = "Cantada dos urso",
+        momento = "Aula 2"
+    ),
+    Cantadas(
+    	ano = 2024,
+        frase = "Cantada 3",
+        momento = "Aula 3"
+    ),
+    Cantadas(
+    	ano = 2023,
+        frase = "Cantada 4",
+        momento = "Aula 4"
+    ),
+    Cantadas(
+    	ano = 2022,
+        frase = "Cantada 5",
+        momento = "Aula 5"
+    )
+)
